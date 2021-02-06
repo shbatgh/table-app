@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import datacsv from './results.csv';
 import { csv, dsv } from 'd3';
-import { App } from './App.js';
 import './App.css';
 
 export const table_data = [{ id: 1, name: 'Cheese', price: 4.9, stock: 20 },
@@ -12,7 +11,6 @@ export const table_data = [{ id: 1, name: 'Cheese', price: 4.9, stock: 20 },
               { id: 6, name: 'Sour Cream ', price: 2.9, stock: 86 },
               { id: 7, name: 'Fancy French Cheese 🇫🇷', price: 99, stock: 12 }];
 
-//export const data = "";
 
 csv('./results.csv', function(data) {
   console.log('dfadga', data);  
