@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import datacsv from './results.csv';
+import { ProductTable, table_data, text } from './Table.js';
 import { csv } from 'd3';
-import { ProductTable, table_data } from './Table.js'
+const d3 = require("d3");
 
 //console.log('dfa', data);
+
+/*csv(datacsv).then(data=>{
+    console.log('hjkd', data);
+});*/
+
+//let text = [{"Date":"2/6/21","Time":"10:00:00","Shoe":"Air Jordan","Price":"$200","SKU":"DABCE-100"}];
+
+console.log('text', text);
 
 const App = () => {
     /*const [data, setData] = useState([]);
@@ -57,9 +66,9 @@ const App = () => {
 export default function Tapp() {
     return (
       <div className="App">
-        {console.log('data', table_data)}
+        {console.log('data', text)}
         <ProductTable
-          products={table_data}
+          products={[text]}
         />
         <App></App>
       </div>

@@ -27,9 +27,6 @@ let pool = new pg.Pool({
 
 const app = express();
 
-//app.use(express.urlencoded({ extended: false }));
-//app.use(express.json());
-
 // CORS implemented so that we don't get errors when trying to access the server from a different server location
 app.use(cors());
 app.use(bodyParser.json());
@@ -67,18 +64,6 @@ app.get('/get/:id', (req, res) => {
         });
 });
 
-/*app.get('/file/read', (req, res, next) => { fs.readFile('results.txt', function (err, buffer) {
-    fs.readFile('results.txt');
-    console.log('test');
-    console.log("buffer");
-    res.send(buffer);
-})
-})*/
-
-/*app.post('/test', (req, res) => {
-    //console.log(req);
-    res.send('Ok');
-});*/
 
 app.post('/add-shoe', function (req, res) {
     console.log('test3');
