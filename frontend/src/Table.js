@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import datacsv from './shoes.csv';
-import { csv } from 'd3';
+import React, { useState, useEffect } from 'react';
+import datacsv from './results.csv';
+import { csv, dsv } from 'd3';
+import { App } from './App.js';
 import './App.css';
 
 export const table_data = [{ id: 1, name: 'Cheese', price: 4.9, stock: 20 },
@@ -11,18 +12,11 @@ export const table_data = [{ id: 1, name: 'Cheese', price: 4.9, stock: 20 },
               { id: 6, name: 'Sour Cream ', price: 2.9, stock: 86 },
               { id: 7, name: 'Fancy French Cheese 🇫🇷', price: 99, stock: 12 }];
 
-export let text = csv(datacsv).then(data=>{
-    console.log('hjkd', data);
-});
-
-/*export let text = [{Date:"2/6/21",Time:"10:00:00",Shoe:"Air Jordan",Price:"$200",SKU:"DABCE-100"},
-{Date:"2/6/21",Time:"10:00:00",Shoe:"Air Jordan",Price:"$200",SKU:"DABCE-100"},
-{Date:"2/6/21",Time:"10:00:00",Shoe:"Air Jordan",Price:"$200",SKU:"DABCE-100"}
-];
+//export const data = "";
 
 csv('./results.csv', function(data) {
   console.log('dfadga', data);  
-})*/
+})
 
 export const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -60,14 +54,13 @@ export const useSortableData = (items, config = null) => {
 
 
 export const ProductTable = (props, data) => {
-    //let text = [{"Date":"2/6/21","Time":"10:00:00","Shoe":"Air Jordan","Price":"$200","SKU":"DABCE-100"}];
   //const [data, setData] = useState([]);
-  /*useEffect(() => {
+  useEffect(() => {
     console.log(datacsv);
     csv(datacsv).then(data=>{
-        console.log('hjkd', data);
+        console.log(data);
     });
-  }, []);*/
+  }, []);
 
   console.log('data:', data);
 
@@ -90,32 +83,14 @@ export const ProductTable = (props, data) => {
               onClick={() => requestSort('name')}
               className={getClassNamesFor('name')}
             >
-              Date
+              Name
             </button>
           </th>
           <th>
             <button
               type="button"
-              onClick={() => requestSort('Time')}
-              className={getClassNamesFor('Time')}
-            >
-              Time
-            </button>
-          </th>
-          <th>
-            <button
-              type="button"
-              onClick={() => requestSort('name')}
-              className={getClassNamesFor('name')}
-            >
-              Shoe
-            </button>
-          </th>
-          <th>
-            <button
-              type="button"
-              onClick={() => requestSort('name')}
-              className={getClassNamesFor('name')}
+              onClick={() => requestSort('price')}
+              className={getClassNamesFor('price')}
             >
               Price
             </button>
@@ -123,10 +98,10 @@ export const ProductTable = (props, data) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort('SKU')}
-              className={getClassNamesFor('SKU')}
+              onClick={() => requestSort('stock')}
+              className={getClassNamesFor('stock')}
             >
-              SKU
+              In Stock
             </button>
           </th>
         </tr>
@@ -134,11 +109,9 @@ export const ProductTable = (props, data) => {
       <tbody>
         {items.map((item) => (
           <tr key={item.id}>
-            <td>{item.Date}</td>
-            <td>${item.Time}</td>
-            <td>{item.Shoe}</td>
-            <td>{item.Price}</td>
-            <td>{item.SKU}</td>
+            <td>{item.name}</td>
+            <td>${item.price}</td>
+            <td>{item.stock}</td>
           </tr>
         ))}
       </tbody>
@@ -146,13 +119,13 @@ export const ProductTable = (props, data) => {
   );
 };
 
-/*export default function CApp() {
+export default function CApp() {
   return (
     <div className="App">
-      {console.log('data',text)}
+      {console.log('data',table_data)}
       <ProductTable
-        products={text}
+        products={table_data}
       />
     </div>
   );
-}*/
+}
